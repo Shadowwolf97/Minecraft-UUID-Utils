@@ -8,6 +8,8 @@ $profile = ProfileUtils::getProfile("Shadowwolf97");
 $result = $profile->getProfileAsArray();
 echo 'username: '.$result['username'].'<br>';
 echo 'uuid: '.$result['uuid'].'<br/>';
+//I am honestly not sure what the properties are at this point, but I included them just in case they are needed.
+//echo 'properties: '.$result['properties'].'<br />';
 
 $profile = ProfileUtils::getProfile("c465b1543c294dbfa7e3e0869504b8d8");
 $result = $profile->getProfileAsArray();
