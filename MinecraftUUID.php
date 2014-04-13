@@ -120,4 +120,18 @@ class ProfileUtils {
         $res = Array("username" =>  $ress['name'], "uuid" => $ress['id']);
         return $res;
     }
+
+    /**
+    * @param $uuid string UUID to format
+    * @return string Properly formatted UUID (According to UUID v4 Standards xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx WHERE y = 8,9,A,or B and x = random digits.)
+    */
+    public static formatUUID($uuid) {
+        $uid = "";
+        $uid .= substr($uuid, 0, 8)."-";
+        $uid .= substr($uuid, 8, 4)."-";
+        $uid .= substr($uuid, 12, 4)."-";
+        $uid .= substr($uuid, 16, 4)."-";
+        $uid .= substr($uuid, 20);
+        return $uid;
+    }
 }
