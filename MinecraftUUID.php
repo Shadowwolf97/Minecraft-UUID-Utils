@@ -115,10 +115,17 @@ class ProfileUtils {
         );
         $context  = stream_context_create($options);
         $result = file_get_contents($url, false, $context);
-        $ress = json_decode($result, true);
-        $ress = $ress["profiles"][0];
-        $res = Array("username" =>  $ress['name'], "uuid" => $ress['id']);
-        return $res;
+        
+        // Verification
+        if(isset($result) && $result != null && $result != false)
+        {
+            $ress = json_decode($result, true);
+            $ress = $ress["profiles"][0];
+            $res = Array("username" =>  $ress['name'], "uuid" => $ress['id']);
+            return $res;
+        }
+        else
+            return null;
     }
 
     /**
