@@ -102,7 +102,7 @@ class ProfileUtils {
      * @return array (Key => Value) "username" => Minecraft username (properly capitalized) "uuid" => Minecraft UUID
      */
     public static function getUUIDFromUsername($username, $timeout = 5) {
-        if(strlen($username) >= 16)
+        if(strlen($username) > 16)
             return array("username" => "", "uuid" => "");
         $url = 'https://api.mojang.com/profiles/page/1';
         $options = array(
