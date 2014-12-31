@@ -79,9 +79,9 @@ class ProfileUtils {
      */
     public static function getProfile($identifier, $timeout = 5) {
         if(strlen($identifier) <= 16)
-            $identifier = ProfileUtils::getUUIDFromUsername($identifier, $timeout)['uuid'];
-        $url = "https://sessionserver.mojang.com/session/minecraft/profile/".$identifier;
-        $ctx = stream_context_create(array(
+            $identifier = ProfileUtils::getUUIDFromUsername($identifier, $timeout);
+            $url = "https://sessionserver.mojang.com/session/minecraft/profile/".$identifier['uuid'];
+            $ctx = stream_context_create(array(
                 'http' => array(
                     'timeout' => $timeout
                 )
