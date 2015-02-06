@@ -5,16 +5,22 @@
  */
 
 $profile = ProfileUtils::getProfile("Shadowwolf97");
-$result = $profile->getProfileAsArray();
-echo 'username: '.$result['username'].'<br>';
-echo 'uuid: '.$result['uuid'].'<br/>';
+
+if ($profile != null) {
+  $result = $profile->getProfileAsArray();
+  echo 'username: '.$result['username'].'<br>';
+  echo 'uuid: '.$result['uuid'].'<br/>';
+}
 //I am honestly not sure what the properties are at this point, but I included them just in case they are needed.
 //echo 'properties: '.$result['properties'].'<br />';
 
 $profile = ProfileUtils::getProfile("c465b1543c294dbfa7e3e0869504b8d8");
-$result = $profile->getProfileAsArray();
-echo 'username: '.$result['username'].'<br>';
-echo 'uuid: '.$result['uuid'].'<br/>';
+
+if ($profile != null) {
+  $result = $profile->getProfileAsArray();
+  echo 'username: '.$result['username'].'<br>';
+  echo 'uuid: '.$result['uuid'].'<br/>';
+}
 
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -115,7 +121,7 @@ class ProfileUtils {
         );
         $context  = stream_context_create($options);
         $result = file_get_contents($url, false, $context);
-        
+
         // Verification
         if(isset($result) && $result != null && $result != false)
         {
