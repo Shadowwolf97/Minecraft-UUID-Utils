@@ -114,12 +114,12 @@ class ProfileUtils {
     public static function getUUIDFromUsername($username, $timeout = 5) {
         if(strlen($username) > 16)
             return array("username" => "", "uuid" => "");
-        $url = 'https://api.mojang.com/profiles/page/1';
+        $url = 'https://api.mojang.com/profiles/minecraft';
         $options = array(
             'http' => array(
                 'header'  => "Content-type: application/json\r\n",
                 'method'  => 'POST',
-                'content' => '{"name":"'.$username.'","agent":"minecraft"}',
+                'content' => '["'.$username.'"]',
                 'timeout' => $timeout
             ),
         );
@@ -130,7 +130,7 @@ class ProfileUtils {
         if(isset($result) && $result != null && $result != false)
         {
             $ress = json_decode($result, true);
-            $ress = $ress["profiles"][0];
+            $ress = $ress[0];
             $res = Array("username" =>  $ress['name'], "uuid" => $ress['id']);
             return $res;
         }
