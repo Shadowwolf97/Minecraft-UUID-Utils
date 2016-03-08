@@ -1,37 +1,4 @@
 <?php
-
-/*
- * Example of using the Classes.
- */
-
-$profile = ProfileUtils::getProfile("Shadowwolf97");
-
-if ($profile != null) {
-  $result = $profile->getProfileAsArray();
-  echo 'username: '.$result['username'].'<br>';
-  echo 'uuid: '.$result['uuid'].'<br/>';
-}
-//I am honestly not sure what the properties are at this point, but I included them just in case they are needed.
-//echo 'properties: '.$result['properties'].'<br />';
-
-$profile = ProfileUtils::getProfile("c465b1543c294dbfa7e3e0869504b8d8");
-
-if ($profile != null) {
-  $result = $profile->getProfileAsArray();
-  echo 'username: '.$result['username'].'<br>';
-  echo 'uuid: '.$result['uuid'].'<br/>';
-}
-
-/*
- * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *                    OutPuts                        *
- * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * username: Shadowwolf97
- * uuid: 795a605316a742f2bdd29e8e33ff0333
- * username: turt2live
- * uuid: c465b1543c294dbfa7e3e0869504b8d8
- */
-
 class MinecraftProfile {
     private $username;
     private $uuid;
