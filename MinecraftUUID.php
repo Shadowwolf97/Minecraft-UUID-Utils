@@ -106,6 +106,58 @@ class ProfileUtils {
     }
 
     /**
+     * @param $usernames array of usernames to be collected. Maximum of 100 usernames.
+     * @param int $timeout http timeout in seconds
+     * @return array of array (Key => Value) "username" => Minecraft username (properly capitalized) "uuid" => Minecraft UUID
+     */
+    public static function getUUIDsFromUsernames($usernames, $timeout = 5){
+        $usernames = array_splice($usernames, 0, 100);
+        foreach($usernames as $user)
+            if(strlen($user) > 16)
+                return array("username" => "", "uuid" => "");
+
+        $url = 'https://api.mojang.com/profiles/minecraft';
+        $first = true;
+        $contents = "[";
+        foreach ($usernames as $user) {
+            if(!$first) {
+                $contents .= ", ";
+            }
+            $contents .= '"' . $user . '"';
+            $first = false;
+        }
+        $contents = "]";
+
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/json\r\n",
+                'method'  => 'POST',
+                'content' => $contents,
+                'timeout' => $timeout
+            )
+        );
+
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+
+        // Verification
+        if(isset($result) && $result != null && $result != false)
+        {
+            $output = array();
+            $ress = json_decode($result, true);
+            for($i = 0; $i < count($ress); $i++){
+                $ress = $ress[$i];
+                $res = Array("username" =>  $ress['name'], "uuid" => $ress['id']);
+                array_push($output, $res);
+            }
+
+            return $output;
+        }
+        else
+            return null;
+    }
+
+    /**
     * @param $uuid string UUID to format
     * @return string Properly formatted UUID (According to UUID v4 Standards xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx WHERE y = 8,9,A,or B and x = random digits.)
     */

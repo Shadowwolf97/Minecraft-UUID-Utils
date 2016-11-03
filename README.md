@@ -76,3 +76,23 @@ if ($profile != null) {
   echo 'uuid: '.$result['uuid'].'<br/>';
 }
 ```
+
+## Background Assets:
+There are also functions that may be called that might be useful.
+
+### ProfileUtils::getUUIDFromUsername
+Takes in a string username.
+
+This function will convert the username and will return an array.
+This array is in the format of (Key => Value) "username" => Minecraft username 
+(properly capitalized) "uuid" => Minecraft UUID.
+
+### ProfileUtils::getUUIDsFromUsernames
+Takes in an array of usernames in string formatting.
+
+This function will convert up to 100 usernames and will return an array containing arrays.
+This internal array is in the format of (Key => Value) "username" => Minecraft username 
+(properly capitalized) "uuid" => Minecraft UUID.
+
+### ProfileUtils::formatUUID
+Takes in an unformatted UUID string and returns a formatted uuid string.
