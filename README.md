@@ -77,6 +77,17 @@ if ($profile != null) {
 }
 ```
 
+### FindProfile.php
+
+Usage, Username to UUID, and UUID to Username (above) goes live with this file.
+
+It accepts GET Request with either username or uuid.
+
+Append "?username=YOUR_USER_NAME" to retrieve associated UUID OR
+Append "?uuid=YOUR_UUID" to retrieve associated Username
+
+This will print out Username and UUID on the screen.
+
 ## Background Assets:
 There are also functions that may be called that might be useful.
 

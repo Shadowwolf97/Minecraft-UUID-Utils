@@ -1,10 +1,5 @@
 <?php
-/*
- * Accepts GET Request with either username or uuid
- * Append "?username=YOUR_USER_NAME" to retrieve associated UUID
- * OR
- * Append "?uuid=YOUR_UUID" to retrieve associated Username
- */
+
 include('MinecraftUUID.php');
 
 $user_name = (filter_input(INPUT_GET, 'username')) ? filter_input(INPUT_GET, 'username') : 'Shadowwolf97';
